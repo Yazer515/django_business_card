@@ -27,7 +27,7 @@ environment = os.environ["ENVIRONMENT"]
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-SECRET_KEY = 'django-insecure-l+5b)dzuw0@l(600=dbhm7xkdmdp5)gpufk*(@o9)l$2$1$7+j'
+SECRET_KEY = os.environ["DJANGO_KEY"]
 
 if environment == "dev":
     DEBUG = True
