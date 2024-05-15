@@ -17,8 +17,8 @@ RUN pip install -r requirements.txt
 # Копируем все файлы проекта Django в контейнер
 COPY . /app/
 
-# Открываем порт 8000 для доступа к приложению
-EXPOSE 8000
+# Открываем порт 80 для доступа к приложению
+EXPOSE 80
 
 # Команда для запуска сервера разработки Django
-CMD ["python", "landingpage/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "landingpage/manage.py", "runserver", "0.0.0.0:80"]
