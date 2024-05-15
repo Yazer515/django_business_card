@@ -1,25 +1,24 @@
-# Use the official Python image as the base image
+# Используем официальный образ Python в качестве базового
 FROM python:3.10
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
+# Устанавливаем переменные окружения
 ENV PYTHONUNBUFFERED 1
 
-# Set the working directory in the container
+# Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
 
-# Copy the requirements file into the container
-COPY ./requirements.txt /app/requirements.txt
+# Копируем файл requirements.txt в контейнер
+COPY requirements.txt /app/
 
-# Install dependencies
+# Устанавливаем зависимости
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copy the Django project files into the container
-COPY . /app
+# Копируем все файлы проекта Django в контейнер
+COPY . /app/
 
-# Expose port 8000
+# Открываем порт 8000 для доступа к приложению
 EXPOSE 8000
 
-# Run the Django development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Команда для запуска сервера разработки Django
+CMD ["python", "landingpage/manage.py", "runserver", "0.0.0.0:8000"]
