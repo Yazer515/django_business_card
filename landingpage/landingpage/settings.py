@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-l+5b)dzuw0@l(600=dbhm7xkdmdp5)gpufk*(@o9)l$2$1$7+j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-landing-yaroslav515.amvera.io']
 
 
 # Application definition
