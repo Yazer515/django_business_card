@@ -24,7 +24,6 @@ environment = os.getenv("ENV")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-l+5b)dzuw0@l(600=dbhm7xkdmdp5)gpufk*(@o9)l$2$1$7+j'
 
 if environment == "dev":
