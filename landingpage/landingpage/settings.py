@@ -17,21 +17,22 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#os.path.join('../' + str(BASE_DIR))
+parent_dir = os.path.dirname(BASE_DIR)
+env_file_path = os.path.join(parent_dir, '.env')
 
-#environment = os.environ["ENV"]
+load_dotenv(env_file_path)
+
+environment = os.environ["ENV"]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 SECRET_KEY = 'django-insecure-l+5b)dzuw0@l(600=dbhm7xkdmdp5)gpufk*(@o9)l$2$1$7+j'
 
-#if environment == "dev":
-    #DEBUG = True
-#elif environment == "prod":
-    #DEBUG = False
-
-DEBUG = False
+if environment == "dev":
+    DEBUG = True
+elif environment == "prod":
+    DEBUG = False
 
 ALLOWED_HOSTS = ['django-landing-yaroslav515.amvera.io', '127.0.0.1']
 
