@@ -22,12 +22,12 @@ env_file_path = os.path.join(parent_dir, '.env')
 
 load_dotenv(env_file_path)
 
-environment = os.environ["ENVIRONMENT"]
+environment = 'prod'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-SECRET_KEY = os.environ["DJANGO_KEY"]
+SECRET_KEY = 'wv6h4078jmh4v6w07mj4vhm087j4hvw50687jm4vwh870jm9nvw40h8c7nj58wjhv408jmwcg45'
 
 if environment == "dev":
     DEBUG = True
