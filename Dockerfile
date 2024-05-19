@@ -20,7 +20,5 @@ COPY . /app/
 # Открываем порт 80 для доступа к приложению
 EXPOSE 80
 
-RUN python landingpage/manage.py collectstatic --noinput
-
 # Команда для запуска сервера разработки Django
 CMD ["python", "landingpage/manage.py", "runserver", "0.0.0.0:80"]
