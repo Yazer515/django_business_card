@@ -16,18 +16,17 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+REPO_DIR = Path(__file__).resolve().parent.parent.parent
 
-parent_dir = os.path.dirname(BASE_DIR)
-env_file_path = os.path.join(parent_dir, '.env')
+load_dotenv(REPO_DIR)
 
-load_dotenv(env_file_path)
-
-environment = 'prod'
+environment = os.environ["ENVIRONMENT"]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-SECRET_KEY = 'wv6h4078jmh4v6w07mj4vhm087j4hvw50687jm4vwh870jm9nvw40h8c7nj58wjhv408jmwcg45'
+SECRET_KEY = os.environ["DJANGO_KEY"]
+
 
 if environment == "dev":
     DEBUG = True
@@ -127,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "Data") # Изначально пустой каталог, куда Django соберёт всё при выполнении manage.py collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, "static") # Изначально пустой каталог, куда Django соберёт всё при выполнении manage.py collectstatic
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
