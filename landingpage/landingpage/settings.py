@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 parent_dir = os.path.dirname(BASE_DIR)
 env_file_path = os.path.join(parent_dir, '.env')
 
-load_dotenv()
+load_dotenv(env_file_path)
 
 environment = os.environ["ENVIRONMENT"]
 
@@ -127,7 +127,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static") # Изначально пустой каталог, куда Django соберёт всё при выполнении manage.py collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, "Data") # Изначально пустой каталог, куда Django соберёт всё при выполнении manage.py collectstatic
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
