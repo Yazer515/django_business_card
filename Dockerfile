@@ -7,18 +7,17 @@ ENV PYTHONUNBUFFERED 1
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
 
-# Копируем файл requirements.txt в контейнер
-COPY requirements.txt /app/
+# Копируем все файлы проекта Django в контейнер
+COPY . .
 
 # Устанавливаем зависимости
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Копируем все файлы проекта Django в контейнер
-COPY . /app/
-
 # Открываем порт 80 для доступа к приложению
 EXPOSE 80
 
-# Команда для запуска сервера разработки Django
+RUN python landingpage/manage.py collectstatic --no-input
+
+# запускаем Django сервер
 CMD ["python", "landingpage/manage.py", "runserver", "0.0.0.0:80"]
