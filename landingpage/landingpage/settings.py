@@ -11,43 +11,30 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 
-from dotenv  import load_dotenv
+import environ
 from pathlib import Path
+
+env = environ.Env(  # <-- Updated!
+    # set casting, default value
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 REPO_DIR = Path(__file__).resolve().parent.parent.parent
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
+environ.Env.read_env(REPO_DIR / '.env')  # <-- Updated!
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, "static") # Изначально пустой каталог, куда Django соберёт всё при выполнении manage.py collectstatic
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static_dev"),
-]
-
-
-load_dotenv(STATIC_ROOT)
-
-environment = os.environ["ENVIRONMENT"]
+ENVIRONMENT = env("ENVIRONMENT")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-SECRET_KEY = os.environ["DJANGO_KEY"]
+SECRET_KEY = env("DJANGO_KEY")
 
 
-if environment == "dev":
+if ENVIRONMENT == "dev":
     DEBUG = True
-elif environment == "prod":
+elif ENVIRONMENT == "prod":
     DEBUG = False
 
 ALLOWED_HOSTS = ['django-landing-yaroslav515.amvera.io', '127.0.0.1']
@@ -137,4 +124,18 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static") # Изначально пустой каталог, куда Django соберёт всё при выполнении manage.py collectstatic
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static_dev"),
+]
