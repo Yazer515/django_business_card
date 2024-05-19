@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 parent_dir = os.path.dirname(BASE_DIR)
 env_file_path = os.path.join(parent_dir, '.env')
 
-load_dotenv(env_file_path)
+load_dotenv()
 
 environment = os.environ["ENVIRONMENT"]
 
